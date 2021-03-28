@@ -1,0 +1,31 @@
+<template>
+  <div>
+    <div>Custom Component</div>
+      <button @click="update">custom</button>
+      <div>
+          Count: { count } 
+      </div>
+  </div>
+
+</template>
+
+<script>
+import { createComponent, ref } from '@core';
+
+export default createComponent({
+  setup(self, parent) {
+    const count = ref(0);
+
+    const update = () => {
+      count.value++;
+      parent.emit('setRowFromChild', self.id);
+    }
+
+    return {
+      count,
+      update
+    }
+  }
+})
+
+</script>

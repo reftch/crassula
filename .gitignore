@@ -1,0 +1,12 @@
+/.idea
+/node_modules
+/dist/*
+/target
+!/dist/*.html
+!/dist/*.svg
+!/dist/*.css
+!/dist/localization
+*.iml
+/public/js
+/tests/e2e/videos/*
+report.json

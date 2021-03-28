@@ -1,0 +1,39 @@
+<template>
+  <div>
+    <button @click="update">Increment</button>
+    <div>
+        Hello Crassula!!! Count: { count } {count2} 
+    </div>
+    <custom-component @setRowFromChild="setRow"></custom-component>
+    <custom-component @setRow2="setRow"></custom-component>
+  </div>
+</template>
+
+<script>
+import { createComponent, ref } from '@core';
+import custom from './custom.crassula';
+
+export default createComponent({
+  setup() {
+    const count = ref(0);
+    const count2 = ref(10);
+
+    const update = () => {
+      count.value++;
+      count2.value--;
+    }
+
+    const setRow = (value) => {
+      console.log('Emitted data: ', value);
+    }
+
+    return {
+      count,
+      count2,
+      update,
+      setRow,
+    }
+  },
+  components: [ custom ]
+})
+</script>
